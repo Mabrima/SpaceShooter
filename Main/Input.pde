@@ -33,7 +33,7 @@ void keyReleased() {
 
 }
 
-float getAxisRaw(String string) {
+float getAxisRaw(String axis) {
 
 	if (axis == "Horizontal") {
 		if (moveRight && moveLeft)
@@ -67,7 +67,7 @@ void mousePressed() {
 }
 
 void mouseReleased() {
-	swith (mouseButton) {
+	switch (mouseButton) {
 		case LEFT: mouseLeft = false;
 			break;
 		case RIGHT:  mouseRight = false;

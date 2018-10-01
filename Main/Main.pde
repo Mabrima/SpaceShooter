@@ -1,11 +1,19 @@
 Player player;
+PVector movement;
 
 void setup() {
 	size(800, 800);
 	player = new Player();
+	movement = new PVector(0,0);
 }
 
 void draw() {
+	background(30, 10, 30);
+	movement.y = getAxisRaw("Vertical");
+	movement.x = getAxisRaw("Horizontal");
+	movement.normalize();
+	player.position.x += movement.x * player.velocity;
+	player.position.y += movement.y * player.velocity;
 	playerDraw();
 }
 
