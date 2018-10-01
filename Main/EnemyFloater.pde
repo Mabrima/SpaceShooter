@@ -7,6 +7,8 @@ public class EnemyFloater extends Enemy{
 		fillColor = color(60, 10, 0);
 	}
 
-	
+	public void move() {
+		
+	}
 
 }

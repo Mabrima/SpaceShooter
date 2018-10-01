@@ -10,13 +10,3 @@ void draw() {
 	player.move();
 	player.playerDraw();
 }
-
-// void playerDraw(){
-
-// 	ellipseMode(CENTER);
-// 	ellipse(player.position.x, player.position.y, player.size, player.size);
-
-// 	// triangle(player.position.x, player.position.y, 
-// 	// 	player.position.x-player.size/2, player.position.y+player.size, 
-// 	// 	player.position.x+player.size/2, player.position.y+player.size);
-// }
