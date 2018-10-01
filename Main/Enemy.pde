@@ -4,7 +4,7 @@ public class Enemy {
 	float size;
 	color fillColor;
 
-	public Enemy () {
+	public Enemy() {
 	}
 
 }

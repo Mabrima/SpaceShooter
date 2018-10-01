@@ -5,6 +5,7 @@ boolean moveRight = false;
 boolean mouseLeft = false;
 boolean mouseRight = false;
 
+
 void keyPressed() {
 
 	switch (key) {

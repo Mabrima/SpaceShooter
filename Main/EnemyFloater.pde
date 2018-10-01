@@ -1,9 +1,9 @@
-public class EnemyFloater extends Enemy{
+public class EnemyFloater extends Enemy {
 	float velocityX;
 	float velocityY;
 
 
-	public EnemyFloater () {
+	public EnemyFloater() {
 		position = new PVector(700, 700);
 		velocityX = -3;
 		velocityY = -2;
@@ -16,10 +16,10 @@ public class EnemyFloater extends Enemy{
 		position.y += velocityY;
 	}
 
-	public void draw(){
+	public void draw() {
 		ellipseMode(CENTER);
-		ellipse(position.x, position.y, size, size);
 		fill(fillColor);
+		ellipse(position.x, position.y, size, size);	
 	}
 
 }
