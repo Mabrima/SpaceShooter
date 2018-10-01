@@ -9,6 +9,7 @@ void setup() {
 }
 
 void draw() {
+	//hej testbranch
 	if (!lost){
 		background(30, 10, 30);
 		player.move();
