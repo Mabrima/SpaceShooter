@@ -1,6 +1,6 @@
 Player player;
 EnemyFloater enemy;
-EnemyChaser enemy2;
+EnemyCharger enemy2;
 int borderLeniency = 20;
 ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 boolean lost = false;
@@ -25,7 +25,7 @@ void draw() {
 		gameOver();
 
 		player.move();
-		enemy2.chase(player.position);
+		enemy2.PlayerPosition(player.position);
 
 		for (Enemy currentEnemy : enemies) {
 			currentEnemy.move();

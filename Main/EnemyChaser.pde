@@ -1,12 +1,12 @@
-public class EnemyChaser extends Enemy {
-	int normalSpeed = 1, chargeSpeed = 10, chargeTimer = 100, chargeCooldown = 60;
+public class EnemyCharger extends Enemy {
+	int normalSpeed = 1, chargeSpeed = 10, chargeTimer = 100, chargeCooldown = 30;
 	boolean charge = false;
 	PVector target;
 	PVector direction;
 	PVector previousTarget;
 
 
-	public EnemyChaser() {
+	public EnemyCharger() {
 		position = new PVector(350, 700);
 		size = 30;
 		fillColor = color(10, 90, 20);
@@ -16,7 +16,7 @@ public class EnemyChaser extends Enemy {
 		previousTarget = new PVector(0,0);
 	}
 
-	public void chase(PVector playerPos) {
+	public void findPlayerPosition(PVector playerPos) {
 		target.set(playerPos);
 	}
 
