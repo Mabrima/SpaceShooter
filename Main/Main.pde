@@ -3,6 +3,7 @@ EnemyFloater enemy;
 EnemyCharger enemy2;
 int borderLeniency = 20;
 ArrayList<Enemy> enemies = new ArrayList<Enemy>();
+ArrayList<Explosion> explosions = new ArrayList<Explosion>();
 boolean lost = false;
 color gameOverColor = color(15, 10, 15);
 int spawnTime = 60;
@@ -21,7 +22,8 @@ void setup() {
 void draw() {
 	//hej testbranch
 	if (!lost){
-		background(10, 10, 10);
+		// background(10, 10, 10);
+		background(255);
 		gameOver();
 
 		player.move();
@@ -34,10 +36,16 @@ void draw() {
 
 		player.playerDraw();
 
+		for (Explosion currentExplosion : explosions) {
+			currentExplosion.move();
+			currentExplosion.draw();
+		}
+
 		ArrayList<Bullet> bullets = player.getBullets();
 		for (int i = 0; i < bullets.size(); i++) { //checks if player bullets hit enemies and kills them
 			for (int j = 0; j < enemies.size(); j++) {
 				if (i != bullets.size() && circleCollision(bullets.get(i).position, bullets.get(i).size, enemies.get(j).position, enemies.get(j).size)){
+					explosions.add(new Explosion(enemies.get(j).position.copy(), enemies.get(j).fillColor));
 					enemies.remove(j);
 					bullets.remove(i);
 				}
@@ -61,7 +69,13 @@ void draw() {
 			if (circleCollision(player.position, player.size, currentEnemy.position, currentEnemy.size)){
 				lost = true;
 			}
-		}		 
+		}
+
+		for (int i = 0; i < explosions.size(); i++) {
+			if (!explosions.get(i).isAlive()) {
+				explosions.remove(i);
+			}
+		}	 
 	}
 	if(lost) {
 		background(30, 10, 30);
