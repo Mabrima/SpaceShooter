@@ -12,7 +12,7 @@ void setup() {
 	size(800, 800);
 	player = new Player();
 	enemy = new EnemyFloater();
-	enemy2 = new EnemyChaser();
+	enemy2 = new EnemyCharger();
 	enemies.add(enemy);
 	enemies.add(new EnemyFloater());
 	enemies.add(enemy2);
