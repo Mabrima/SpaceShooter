@@ -3,11 +3,9 @@ public class Player {
 	PVector position;
 	float velocity;
 	float size;
-	int magSize = 10;
 	int reloadTime = 30;
 	int reloadTimer = 0;
-	Bullet[] bullets = new Bullet[magSize];
-	int bulletItterator = 0;
+	ArrayList<Bullet> bullets = new ArrayList<Bullet>();
 
 	//triangle vectors
 	PVector facingDirection, facingLeft, facingRight;
@@ -65,9 +63,14 @@ public class Player {
 		fill(0,255,0);
 		triangle(frontx, fronty, leftx, lefty, rightx, righty);
 
-		for (int i = 0; i < bulletItterator; ++i) {
-			bullets[i].move();
-			bullets[i].draw();
+		for (int i = 0; i < bullets.size(); i++) {
+			bullets.get(i).move();
+			if (bullets.get(i).position.x > width || bullets.get(i).position.y > height || bullets.get(i).position.x < 0 || bullets.get(i).position.y < 0) {
+				bullets.remove(i); 
+				i--;
+			} else {
+				bullets.get(i).draw();
+			}
 		}
 
 
@@ -80,11 +83,14 @@ public class Player {
 		if (reloadTimer > 0) {
 			reloadTimer--;
 		}
-		else if (getMouseLeftClick() && bulletItterator < magSize) {
-			bullets[bulletItterator] = new Bullet(position.copy(), facingDirection.copy());
-			bulletItterator++;
+		else if (getMouseLeftClick()) {
+			bullets.add(new Bullet(position.copy(), facingDirection.copy()));
 			reloadTimer = reloadTime;
 		}
+	}
+
+	ArrayList<Bullet> getBullets() {
+		return bullets;
 	}
 
 }

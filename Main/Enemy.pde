@@ -7,4 +7,10 @@ public class Enemy {
 	public Enemy() {
 	}
 
+	public void draw(){
+	}
+
+	public void move(){
+	}
+
 }
