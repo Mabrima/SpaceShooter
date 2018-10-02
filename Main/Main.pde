@@ -1,5 +1,6 @@
 Player player;
 EnemyFloater enemy;
+EnemyChaser enemy2;
 boolean lost = false;
 color gameOverColor = color(25, 10, 25);
 
@@ -7,6 +8,7 @@ void setup() {
 	size(800, 800);
 	player = new Player();
 	enemy = new EnemyFloater();
+	enemy2 = new EnemyChaser();
 }
 
 void draw() {
@@ -16,6 +18,9 @@ void draw() {
 		player.move();
 		enemy.move();
 		enemy.draw();
+		enemy2.chase(player.position);		
+		enemy2.move();
+		enemy2.draw();
 		player.playerDraw();
 		lost = circleCollision(player.position, player.size, enemy.position, enemy.size);
 	}
