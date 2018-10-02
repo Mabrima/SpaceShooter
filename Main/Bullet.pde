@@ -8,12 +8,13 @@ public class Bullet {
 		this.direction = direction;
 	}
 
-	public void moves() {
-		position.x += cos(direction.x) * velocity;
-		position.y += sin(direction.y) * velocity;
+	public void move() {
+		position.x += direction.x * velocity; 
+		position.y += direction.y * velocity; 
 	}
 
 	public void draw() {
+		fill(255);
 		ellipseMode(CENTER);
 		ellipse(position.x, position.y, size, size);
 	}

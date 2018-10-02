@@ -3,10 +3,15 @@ public class Player {
 	PVector position;
 	float velocity;
 	float size;
+	int magSize = 10;
+	int reloadTime = 30;
+	int reloadTimer = 0;
+	Bullet[] bullets = new Bullet[magSize];
+	int bulletItterator = 0;
 
 	//triangle vectors
 	PVector facingDirection, facingLeft, facingRight;
-	int shipLength = 20;
+	int shipLength = 10;
 	int halfShipWidth = shipLength / 2;
 	float frontx, fronty, leftx, lefty, rightx, righty;
 	
@@ -46,20 +51,40 @@ public class Player {
 		rightx = position.x + facingRight.x * halfShipWidth;
 		righty = position.y + facingRight.y * halfShipWidth;
 
+		shoot();
+
 	}
 
 	public void playerDraw(){
 
-		// ellipseMode(CENTER);
-		// ellipse(position.x, position.y, size, size);
+		fill(70, 100, 20);
+		ellipseMode(CENTER);
+		ellipse(position.x, position.y, size, size);
 
 		//Antons hopkokade rotating triangle
 		fill(0,255,0);
 		triangle(frontx, fronty, leftx, lefty, rightx, righty);
 
+		for (int i = 0; i < bulletItterator; ++i) {
+			bullets[i].move();
+			bullets[i].draw();
+		}
+
+
 		// triangle(player.position.x, player.position.y, 
 		// 	player.position.x-player.size/2, player.position.y+player.size, 
 		// 	player.position.x+player.size/2, player.position.y+player.size);
+	}
+
+	void shoot(){
+		if (reloadTimer > 0) {
+			reloadTimer--;
+		}
+		else if (getMouseLeftClick() && bulletItterator < magSize) {
+			bullets[bulletItterator] = new Bullet(position.copy(), facingDirection.copy());
+			bulletItterator++;
+			reloadTimer = reloadTime;
+		}
 	}
 
 }

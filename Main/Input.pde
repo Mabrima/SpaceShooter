@@ -58,6 +58,10 @@ return 0;
 
 }
 
+boolean getMouseLeftClick() {
+	return mouseLeft;
+}
+
 void mousePressed() {
 	switch (mouseButton) {
 		case LEFT: mouseLeft = true;
