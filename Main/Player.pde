@@ -6,6 +6,7 @@ public class Player {
 	int reloadTime = 10;
 	int reloadTimer = 0;
 	int borderLeniency = 20;
+	color bulletColor = color(255);
 	ArrayList<Bullet> bullets = new ArrayList<Bullet>();
 
 	//triangle vectors
@@ -80,7 +81,7 @@ public class Player {
 			reloadTimer--;
 		}
 		else if (getMouseLeftClick()) {
-			bullets.add(new Bullet(position.copy(), facingDirection.copy()));
+			bullets.add(new Bullet(position.copy(), facingDirection.copy(), bulletColor));
 			reloadTimer = reloadTime;
 		}
 	}
