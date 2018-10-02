@@ -25,7 +25,7 @@ void draw() {
 		gameOver();
 
 		player.move();
-		enemy2.PlayerPosition(player.position);
+		enemy2.findPlayerPosition(player.position);
 
 		for (Enemy currentEnemy : enemies) {
 			currentEnemy.move();
