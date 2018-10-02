@@ -1,7 +1,7 @@
 public class Bullet {
 	PVector position;
 	PVector direction;
-	float velocity = 5;
+	float velocity = 10;
 	float size = 5;
 	public Bullet(PVector position, PVector direction) {
 		this.position = position;

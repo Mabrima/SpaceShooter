@@ -3,8 +3,9 @@ public class Player {
 	PVector position;
 	float velocity;
 	float size;
-	int reloadTime = 30;
+	int reloadTime = 10;
 	int reloadTimer = 0;
+	int borderLeniency = 20;
 	ArrayList<Bullet> bullets = new ArrayList<Bullet>();
 
 	//triangle vectors
@@ -65,12 +66,7 @@ public class Player {
 
 		for (int i = 0; i < bullets.size(); i++) {
 			bullets.get(i).move();
-			if (bullets.get(i).position.x > width || bullets.get(i).position.y > height || bullets.get(i).position.x < 0 || bullets.get(i).position.y < 0) {
-				bullets.remove(i); 
-				i--;
-			} else {
-				bullets.get(i).draw();
-			}
+			bullets.get(i).draw();
 		}
 
 
