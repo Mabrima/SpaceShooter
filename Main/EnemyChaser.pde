@@ -1,7 +1,6 @@
 public class EnemyChaser extends Enemy {
-	int speed, chargeSpeed;
-	int chargeTimer = 0;
-	int reloadTimer = 100;
+	int normalSpeed = 1, chargeSpeed = 10, chargeTimer = 100, chargeCooldown = 60;
+	boolean charge = false;
 	PVector target;
 	PVector direction;
 	PVector previousTarget;
@@ -9,37 +8,41 @@ public class EnemyChaser extends Enemy {
 
 	public EnemyChaser() {
 		position = new PVector(350, 700);
-		speed = 2;
-		chargeSpeed = 3;
 		size = 30;
 		fillColor = color(10, 90, 20);
-		target = new PVector();
-		direction = new PVector();
-		previousTarget = new PVector();
+
+		target = new PVector(0,0);
+		direction = new PVector(0,0);
+		previousTarget = new PVector(0,0);
+	}
+
+	public void chase(PVector playerPos) {
+		target.set(playerPos);
 	}
 
 	public void move() {
-		if (chargeTimer >= 30) {
-			chargeTimer--;
-			speed = 2;
-			direction.set(target.x - position.x, target.y - position.y);
-			direction.normalize();
-			position.x += direction.x * speed;
-			position.y += direction.y * speed;	
-		}
-		else if (chargeTimer < 30 && chargeTimer > 0) {
-			chargeTimer--;
-			speed = 10;
+
+		if (charge) {
 			direction.set(previousTarget.x - position.x, previousTarget.y - position.y);
 			direction.normalize();
-			position.x += direction.x * speed;
-			position.y += direction.y * speed;
+			position.x += direction.x * chargeSpeed;
+			position.y += direction.y * chargeSpeed;
+			if (dist(position.x, position.y, previousTarget.x, previousTarget.y) < 5) {
+				charge = false;
+				chargeTimer = chargeCooldown;
+			}
 		}
-		else if (chargeTimer == 0) {
-			chargeTimer = reloadTimer;
-			previousTarget.set(target);
+		else {
+			direction.set(target.x - position.x, target.y - position.y);
+			direction.normalize();
+			position.x += direction.x * normalSpeed;
+			position.y += direction.y * normalSpeed;
+			chargeTimer--;
+			if (chargeTimer == 0) {
+				previousTarget.set(target);
+				charge = true;
+			}
 		}
-		println(chargeTimer);
 	}
 
 	public void draw() {
@@ -48,9 +51,11 @@ public class EnemyChaser extends Enemy {
 		ellipse(position.x, position.y, size, size);	
 	}
 
-	public void chase(PVector playerPos) {
-		target.set(playerPos);
-
-	}
-
 }
+
+/*
+1. Chase player slowly for x seconds
+2. Snapshot player position
+3. Charge towards snapshotted position
+4. When reaching player position, goto step 1
+*/
