@@ -10,8 +10,9 @@ void setup() {
 }
 
 void draw() {
+	//hej testbranch
 	if (!lost){
-		background(30, 10, 30);
+		background(255);
 		player.move();
 		enemy.move();
 		enemy.draw();
