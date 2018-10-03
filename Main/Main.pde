@@ -1,6 +1,7 @@
 Player player;
 EnemyFloater enemy;
 EnemyCharger enemy2;
+EnemyChaser enemy3;
 int borderLeniency = 20;
 ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 ArrayList<Explosion> explosions = new ArrayList<Explosion>();
@@ -14,9 +15,11 @@ void setup() {
 	player = new Player();
 	enemy = new EnemyFloater();
 	enemy2 = new EnemyCharger();
+	enemy3 = new EnemyChaser();
 	enemies.add(enemy);
 	enemies.add(new EnemyFloater());
 	enemies.add(enemy2);
+	enemies.add(enemy3);
 }
 
 void draw() {
@@ -28,6 +31,7 @@ void draw() {
 
 		player.move();
 		enemy2.findPlayerPosition(player.position);
+		enemy3.findPlayerPosition(player.position);
 
 		for (Enemy currentEnemy : enemies) {
 			currentEnemy.move();

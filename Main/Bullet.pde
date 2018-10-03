@@ -4,6 +4,7 @@ public class Bullet {
 	color bulletColor;
 	float velocity = 10;
 	float size = 5;
+	
 	public Bullet(PVector position, PVector direction, color bulletColor) {
 		this.position = position;
 		this.direction = direction;
