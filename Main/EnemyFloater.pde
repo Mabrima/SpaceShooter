@@ -9,6 +9,10 @@ public class EnemyFloater extends Enemy {
 		velocityY = random(-5, 5);
 	}
 
+	private EnemyFloater(PVector position, float size, color fillColor) {
+		super(position, size, fillColor);
+	}
+
 	public void move() {
 		position.x += velocityX;
 		position.y += velocityY;

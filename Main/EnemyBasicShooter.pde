@@ -1,34 +1,29 @@
-public class EnemyBasicShooter extends Enemy {
-	float velocityX;
-	float velocityY;
-	ArrayList<Bullet> enemyBullets = new ArrayList<Bullet>();
+public class EnemyBasicShooter extends EnemyFloater {
+	ArrayList<Bullet> bullets = new ArrayList<Bullet>();
+	int reloadTimer = 0;
+	int reloadTime = 30;
+	PVector target = new PVector(0,0);
 
 	public EnemyBasicShooter() {
-		position = new PVector(random(500, 700), random(500, 700));
-		velocityX = random(-5, 5);
-		velocityY = random(-5, 5);
-		size = 30;
-		fillColor = (27, 183, 175);
+		super(new PVector(random(500, 700), random(500, 700)), 15, color(95,95,0));
 	}
 
-	public void move() {
-		position.x += velocityX;
-		position.y += velocityY;
-	}
-
-	public void draw() {
-		ellipseMode(CENTER);
-		fill(fillColor);
-		ellipse(position.x, position.y, size, size);
+	public void findPlayerPosition(PVector playerPos) {
+		target.set(playerPos);
 	}
 
 	void shoot() {
-		if (bulletIntervalTimer > 0) {
-			bulletIntervalTimer--;
+		if (reloadTimer > 0) {
+			reloadTimer--;
 		}
 		else {
-			bullet
+			bullets.add(new Bullet(position.copy(), target.normalize(), fillColor));
+			reloadTimer = reloadTime;
 		}
+	}
+
+	ArrayList<Bullet> getBullets() {
+		return bullets;
 	}
 
 }
