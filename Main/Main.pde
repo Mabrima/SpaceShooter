@@ -45,6 +45,9 @@ void draw() {
 			if (currentEnemy instanceof EnemyChaser){
 				EnemyChaser chaser = (EnemyChaser) currentEnemy;
 				chaser.findPlayerPosition(player.position);
+			} else if (currentEnemy instanceof EnemyBasicShooter) {
+				EnemyBasicShooter shooter = (EnemyBasicShooter) currentEnemy;
+				shooter.findPlayerPosition(player.position);
 			}
 		}
 
