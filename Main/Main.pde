@@ -4,10 +4,11 @@ EnemyCharger enemy2;
 EnemyChaser enemy3;
 EnemyBasicShooter enemyShooter;
 int borderLeniency = 20;
-boolean lost = false;
 color gameOverColor = color(15, 10, 15);
 int spawnTime = 120;
 int spawnTimer = 120;
+
+String gameState; //Menu, Gameplay, GameOver
 
 ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 ArrayList<Explosion> explosions = new ArrayList<Explosion>();
@@ -22,6 +23,8 @@ void setup() {
 	enemy3 = new EnemyChaser();
 	enemyShooter = new EnemyBasicShooter();
 
+	gameState = "Gameplay";
+
 	enemies.add(enemyShooter);
 	enemies.add(enemy);
 	enemies.add(enemy2);
@@ -29,7 +32,9 @@ void setup() {
 }
 
 void draw() {
-	if (!lost){
+
+
+	if (gameState.equals("Gameplay")) {
 		// background(10, 10, 10);
 		background(255);
 		gameOver();
@@ -115,12 +120,12 @@ void draw() {
 		//Checks enemies and enemy bullets towards the player and cause a loss state if it hits them
 		for (Enemy currentEnemy : enemies) {
 			if (circleCollision(player.position, player.size, currentEnemy.position, currentEnemy.size)){
-				lost = true;
+				gameState = "GameOver";
 			}
 		}
 		for (Bullet bullet : enemyBullets) {
 			if (circleCollision(player.position, player.size, bullet.position, bullet.size)){
-				lost = true;
+				gameState = "GameOver";
 			}
 		}
 
@@ -132,7 +137,7 @@ void draw() {
 		}	 
 	}
 
-	if(lost) {
+	if(gameState.equals("GameOver")) {
 		background(30, 10, 30);
 		gameOverColor = color(200, 10, 20);
 		gameOver();
