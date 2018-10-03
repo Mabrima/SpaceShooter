@@ -35,8 +35,8 @@ void draw() {
 
 
 	if (gameState.equals("Gameplay")) {
-		// background(10, 10, 10);
-		background(255);
+		background(10, 10, 10);
+		// background(255);
 		gameOver();
 
 
@@ -120,12 +120,19 @@ void draw() {
 		//Checks enemies and enemy bullets towards the player and cause a loss state if it hits them
 		for (Enemy currentEnemy : enemies) {
 			if (circleCollision(player.position, player.size, currentEnemy.position, currentEnemy.size)){
-				gameState = "GameOver";
+				player.hit();
+				if (!player.isAlive()) {
+					gameState = "GameOver";
+				}
 			}
 		}
 		for (Bullet bullet : enemyBullets) {
 			if (circleCollision(player.position, player.size, bullet.position, bullet.size)){
-				gameState = "GameOver";
+				player.hit();
+
+				if (!player.isAlive()) {
+					gameState = "GameOver";
+				}
 			}
 		}
 
@@ -139,9 +146,9 @@ void draw() {
 
 	if(gameState.equals("GameOver")) {
 		background(30, 10, 30);
-		gameOverColor = color(200, 10, 20);
 		gameOver();
 	}
+	gameOverColor = color(200 - player.getHealth()*2, 10, 20);
 	surface.setTitle(int(frameRate) + " fps");
 	newWave();
 }

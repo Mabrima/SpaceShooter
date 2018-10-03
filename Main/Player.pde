@@ -7,6 +7,7 @@ public class Player {
 	int reloadTimer = 0;
 	int borderLeniency = 20;
 	color bulletColor = color(255);
+	int health = 100;
 	ArrayList<Bullet> bullets = new ArrayList<Bullet>();
 
 	//triangle vectors
@@ -84,5 +85,17 @@ public class Player {
 	ArrayList<Bullet> getBullets() {
 		return bullets;
 	}
+
+	void hit(){
+		health--;
+	}
+
+	int getHealth() {
+		return health;
+	}
+
+	boolean isAlive(){
+		return health > 0;
+	} 
 
 }
