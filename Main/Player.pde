@@ -69,11 +69,6 @@ public class Player {
 			bullets.get(i).move();
 			bullets.get(i).draw();
 		}
-
-
-		// triangle(player.position.x, player.position.y, 
-		// 	player.position.x-player.size/2, player.position.y+player.size, 
-		// 	player.position.x+player.size/2, player.position.y+player.size);
 	}
 
 	void shoot(){
