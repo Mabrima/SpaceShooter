@@ -30,7 +30,6 @@ void setup() {
 }
 
 void draw() {
-	//hej testbranch
 	if (!lost){
 		// background(10, 10, 10);
 		background(255);
