@@ -6,7 +6,7 @@ public class EnemyBasicShooter extends EnemyFloater {
 	boolean fired = false;
 
 	public EnemyBasicShooter() {
-		super(new PVector(random(0, width), random(0, height)), 15, color(0,100,200));
+		super(new PVector(random(0, width), random(0, height)), 25, color(0,100,200));
 		velocityX = random(-5, 5);
 		velocityY = random(-5, 5);
 	}
