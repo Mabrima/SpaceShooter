@@ -9,6 +9,13 @@ int spawnTime = 45;
 int spawnTimer = 30;
 int frames;
 
+// for background
+int numberOfStars = 200;
+int starTimer = 30;
+float shineValue;
+float[] stars;
+ArrayList<SpaceLines> spaceLine = new ArrayList<SpaceLines>();
+
 String gameState; //Menu, Gameplay, GameOver
 
 ArrayList<Enemy> enemies = new ArrayList<Enemy>();
@@ -24,6 +31,10 @@ void setup() {
 	textSize(50);
 
 	gameState = "Gameplay";
+
+	//for background
+	stars = new float[numberOfStars];
+	starBackground();
 
 	// enemy = new EnemyFloater();
 	// enemy2 = new EnemyCharger();
@@ -108,6 +119,11 @@ void resetGame() {
 void updateGame() {
 	background(10, 10, 10);
 	// background(255);
+
+	stroke(255);
+	strokeWeight(1);
+	animateBackground();
+	updateStars();
 
 	healthSystem();
 
@@ -218,4 +234,48 @@ void updateGame() {
 			explosions.remove(i);
 		}
 	}	 
+}
+
+
+void starBackground() {
+	for (int i = 0; i < stars.length; i += 2) {
+		stars[i] = random(width);
+		stars[i+1] = random(height);	
+	}
+}
+
+void animateBackground() {
+	for (int i = 0; i < stars.length; i += 2) {
+	shineValue = random(1);
+		if (shineValue > 0.9) {
+			strokeWeight(2);
+			point(stars[i], stars[i+1]);
+		}
+		else {
+			strokeWeight(1);
+			point(stars[i], stars[i+1]);
+		}
+	}
+}
+
+void updateStars() {
+	if (starTimer > 0) {
+		starTimer--;
+	}
+	else {		
+		spaceLine.add(new SpaceLines());
+		starTimer = 30;
+	}
+
+	for (SpaceLines eachLine : spaceLine) {
+		eachLine.move();
+		strokeWeight(1);
+		eachLine.draw();
+	}
+
+	for (int i = 0; i < spaceLine.size(); ++i) {
+		if(outOfBorders(spaceLine.get(i).position)) {
+			spaceLine.remove(i);
+		}
+	}
 }
