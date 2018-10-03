@@ -7,12 +7,13 @@ public class EnemyBasicShooter extends EnemyFloater {
 
 	public EnemyBasicShooter() {
 		super(new PVector(random(500, 700), random(500, 700)), 15, color(95,95,0));
-		velocityX = random(0);
-		velocityY = random(0);
+		velocityX = random(-5, 5);
+		velocityY = random(-5, 5);
 	}
 
 	public void findPlayerPosition(PVector playerPos) {
 		target.set(playerPos.x - position.x, playerPos.y - position.y);
+		target.normalize();
 	}
 
 	public void move() {
@@ -27,7 +28,7 @@ public class EnemyBasicShooter extends EnemyFloater {
 			fired = false;
 		}
 		else {
-			bullet = new Bullet(position.copy(), target.normalize(), fillColor);
+			bullet = new Bullet(position.copy(), target, fillColor);
 			reloadTimer = reloadTime;
 			fired = true;
 		}
