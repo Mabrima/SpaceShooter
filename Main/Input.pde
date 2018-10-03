@@ -4,6 +4,7 @@ boolean moveLeft = false;
 boolean moveRight = false;
 boolean mouseLeft = false;
 boolean mouseRight = false;
+boolean spacePressed = false;
 
 
 void keyPressed() {
@@ -24,6 +25,9 @@ void keyPressed() {
 		case 'A': moveLeft = true;
 			break;
 		case 'D': moveRight = true;
+			break;
+		case 32: spacePressed = true;
+			break;
 	}
 
 }
@@ -46,6 +50,9 @@ void keyReleased() {
 		case 'A': moveLeft = false;
 			break;
 		case 'D': moveRight = false;
+			break;
+		case 32: spacePressed = false;
+			break;	
 	}
 
 

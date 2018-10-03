@@ -7,7 +7,9 @@ public class Player {
 	int reloadTimer = 0;
 	int borderLeniency = 20;
 	color bulletColor = color(255);
+	color fillColor = color(200, 100, 20);
 	int health = 45;
+
 	ArrayList<Bullet> bullets = new ArrayList<Bullet>();
 
 	//triangle vectors
@@ -58,7 +60,7 @@ public class Player {
 
 	public void playerDraw(){
 
-		fill(70, 100, 20);
+		fill(fillColor);
 		ellipseMode(CENTER);
 		ellipse(position.x, position.y, size, size);
 

@@ -5,8 +5,9 @@ EnemyChaser enemy3;
 EnemyBasicShooter enemyShooter;
 int borderLeniency = 20;
 color gameOverColor = color(15, 10, 15);
-int spawnTime = 120;
-int spawnTimer = 120;
+int spawnTime = 60;
+int spawnTimer = 60;
+int frames;
 
 String gameState; //Menu, Gameplay, GameOver
 
@@ -17,18 +18,20 @@ ArrayList<Bullet> enemyBullets = new ArrayList<Bullet>();
 
 void setup() {
 	size(1280, 720);
+	frames = 0;
 	player = new Player();
-	enemy = new EnemyFloater();
-	enemy2 = new EnemyCharger();
-	enemy3 = new EnemyChaser();
-	enemyShooter = new EnemyBasicShooter();
+	
 
 	gameState = "Gameplay";
 
-	enemies.add(enemyShooter);
-	enemies.add(enemy);
-	enemies.add(enemy2);
-	enemies.add(enemy3);
+	// enemy = new EnemyFloater();
+	// enemy2 = new EnemyCharger();
+	// enemy3 = new EnemyChaser();
+	// enemyShooter = new EnemyBasicShooter();
+	// enemies.add(enemyShooter);
+	// enemies.add(enemy);
+	// enemies.add(enemy2);
+	// enemies.add(enemy3);
 }
 
 void draw() {
@@ -121,6 +124,7 @@ void draw() {
 		for (Enemy currentEnemy : enemies) {
 			if (circleCollision(player.position, player.size, currentEnemy.position, currentEnemy.size)){
 				player.hit();
+				addExplosions(player, 3);
 				if (!player.isAlive()) {
 					gameState = "GameOver";
 				}
@@ -130,6 +134,8 @@ void draw() {
 			if (circleCollision(player.position, player.size, bullet.position, bullet.size)){
 				player.hit();
 				player.hit();
+
+				addExplosions(player, 3);
 
 				if (!player.isAlive()) {
 					gameState = "GameOver";
@@ -148,10 +154,19 @@ void draw() {
 	if(gameState.equals("GameOver")) {
 		background(30, 10, 30);
 		gameOver();
+
+		if (frames%120 >= 60) {
+			text("Press Space to retry!", width/2 - textWidth("Press Space to retry!")/2, height*2/3);
+		}
+
+		if (spacePressed) {
+			resetGame();
+		}
 	}
-	gameOverColor = color(200 - player.getHealth()*4, 10, 20);
+	gameOverColor = color(200 - player.health*4, 10, 20);
 	surface.setTitle(int(frameRate) + " fps");
 	newWave();
+	frames++;
 }
 
 void gameOver() {
@@ -180,4 +195,18 @@ void addExplosions(Enemy enemy, int numberOfParticles) {
 	for (int i = 0; i < numberOfParticles; ++i) {
 		explosions.add(new Explosion(enemy.position.copy(), enemy.fillColor));
 	}
+}
+
+void addExplosions(Player player, int numberOfParticles) {
+	for (int i = 0; i < numberOfParticles; ++i) {
+		explosions.add(new Explosion(player.position.copy(), player.fillColor));
+	}
+}
+
+void resetGame() {
+	player.health = 45;
+	enemies.clear();
+	enemyBullets.clear();
+	explosions.clear();
+	gameState = "Gameplay";
 }
