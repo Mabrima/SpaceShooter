@@ -24,7 +24,6 @@ void setup() {
 
 	enemies.add(enemyShooter);
 	enemies.add(enemy);
-	enemies.add(new EnemyFloater());
 	enemies.add(enemy2);
 	enemies.add(enemy3);
 }

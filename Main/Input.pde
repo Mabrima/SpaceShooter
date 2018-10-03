@@ -16,6 +16,14 @@ void keyPressed() {
 		case 'a': moveLeft = true;
 			break;
 		case 'd': moveRight = true;
+			break;
+		case 'W': moveUp = true;
+			break;
+		case 'S': moveDown = true;
+			break;
+		case 'A': moveLeft = true;
+			break;
+		case 'D': moveRight = true;
 	}
 
 }
@@ -30,7 +38,16 @@ void keyReleased() {
 		case 'a': moveLeft = false;
 			break;
 		case 'd': moveRight = false;
+			break;
+		case 'W': moveUp = false;
+			break;
+		case 'S': moveDown = false;
+			break;
+		case 'A': moveLeft = false;
+			break;
+		case 'D': moveRight = false;
 	}
+
 
 }
 
