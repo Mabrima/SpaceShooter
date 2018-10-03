@@ -149,7 +149,7 @@ void draw() {
 void gameOver() {
 	textSize(50);
 	fill(gameOverColor);
-    text("Game Over", width/3, height/2); 
+    text("Game Over", width/2 - textWidth("Game Over") / 2, height/2); 
 }
 
 boolean outOfBorders(PVector position) {

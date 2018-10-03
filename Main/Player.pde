@@ -76,7 +76,7 @@ public class Player {
 			reloadTimer--;
 		}
 		else if (getMouseLeftClick()) {
-			bullets.add(new Bullet(position.copy(), facingDirection.copy(), bulletColor));
+			bullets.add(new Bullet(position.copy(), facingDirection.copy(), bulletColor, 10, 10));
 			reloadTimer = reloadTime;
 		}
 	}

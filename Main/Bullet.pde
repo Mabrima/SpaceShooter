@@ -2,13 +2,19 @@ public class Bullet {
 	PVector position;
 	PVector direction;
 	color bulletColor;
-	float velocity = 10;
-	float size = 5;
+	float velocity;
+	float size;
 	
-	public Bullet(PVector position, PVector direction, color bulletColor) {
+	public Bullet(PVector position,
+				  PVector direction,
+				  color bulletColor,
+				  float bulletVelocity,
+				  float bulletSize) {
 		this.position = position;
 		this.direction = direction;
 		this.bulletColor = bulletColor;
+		this.velocity = bulletVelocity;
+		this.size = bulletSize;
 	}
 
 	public void move() {
