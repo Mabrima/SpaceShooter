@@ -28,7 +28,7 @@ public class EnemyBasicShooter extends EnemyFloater {
 			fired = false;
 		}
 		else {
-			bullet = new Bullet(position.copy(), target, fillColor);
+			bullet = new Bullet(position.copy(), target.copy(), fillColor);
 			reloadTimer = reloadTime;
 			fired = true;
 		}
