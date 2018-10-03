@@ -8,15 +8,15 @@ public class EnemyChaser extends Enemy {
 		super(new PVector(350, 700), 30, color(10, 150, 20));
 
 		speed = 3;
-		target = new PVector();
-		direction = new PVector();
+		target = new PVector(0, 0);
+		direction = new PVector(0, 0);
 	}
 
 	private EnemyChaser(PVector position, float size, color fillColor) {
 		super(position, size, fillColor);
 
-		target = new PVector(0,0);
-		direction = new PVector(0,0);
+		target = new PVector(0, 0);
+		direction = new PVector(0, 0);
 	}
 
 	public void move() {
