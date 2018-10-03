@@ -12,6 +12,7 @@ public class Enemy {
 
 	public void draw() {
 		ellipseMode(CENTER);
+		stroke(fillColor);
 		fill(fillColor);
 		ellipse(position.x, position.y, size, size);	
 	}

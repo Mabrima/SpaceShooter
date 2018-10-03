@@ -61,6 +61,7 @@ public class Player {
 	public void playerDraw(){
 
 		fill(fillColor);
+		stroke(fillColor);
 		ellipseMode(CENTER);
 		ellipse(position.x, position.y, size, size);
 

@@ -18,10 +18,4 @@ public class EnemyFloater extends Enemy {
 		position.y += velocityY;
 	}
 
-	public void draw() {
-		ellipseMode(CENTER);
-		fill(fillColor);
-		ellipse(position.x, position.y, size, size);	
-	}
-
 }

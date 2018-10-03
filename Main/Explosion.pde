@@ -19,6 +19,7 @@ public class Explosion {
 
 	public void draw() {
 		fill(enemyColor);
+		stroke(enemyColor);
 		ellipseMode(CENTER);
 		ellipse(position.x, position.y, lifeTime, lifeTime);
 	}

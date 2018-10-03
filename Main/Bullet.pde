@@ -24,6 +24,7 @@ public class Bullet {
 
 	public void draw() {
 		fill(bulletColor);
+		stroke(bulletColor);
 		ellipseMode(CENTER);
 		ellipse(position.x, position.y, size, size);
 	}
