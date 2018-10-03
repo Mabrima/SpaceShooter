@@ -4,7 +4,7 @@ public class EnemyCharger extends EnemyChaser {
 	PVector previousTarget;
 
 	public EnemyCharger() {
-		super(new PVector(400, 700), 30, color(10, 90, 20));
+		super(new PVector(random(0, width), random(0, height)), 30, color(10, 90, 20));
 
 		previousTarget = new PVector(0,0);
 	}
