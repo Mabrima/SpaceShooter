@@ -16,7 +16,7 @@ ArrayList<Bullet> enemyBullets = new ArrayList<Bullet>();
 
 
 void setup() {
-	size(800, 800);
+	size(1280, 720);
 	player = new Player();
 	enemy = new EnemyFloater();
 	enemy2 = new EnemyCharger();
