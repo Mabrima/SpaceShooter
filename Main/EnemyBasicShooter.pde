@@ -12,7 +12,7 @@ public class EnemyBasicShooter extends EnemyFloater {
 	}
 
 	public void findPlayerPosition(PVector playerPos) {
-		target.set(playerPos);
+		target.set(playerPos.x - position.x, playerPos.y - position.y);
 	}
 
 	public void move() {
