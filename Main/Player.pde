@@ -7,7 +7,7 @@ public class Player {
 	int reloadTimer = 0;
 	int borderLeniency = 20;
 	color bulletColor = color(255);
-	int health = 100;
+	int health = 45;
 	ArrayList<Bullet> bullets = new ArrayList<Bullet>();
 
 	//triangle vectors

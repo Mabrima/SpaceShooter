@@ -129,6 +129,7 @@ void draw() {
 		for (Bullet bullet : enemyBullets) {
 			if (circleCollision(player.position, player.size, bullet.position, bullet.size)){
 				player.hit();
+				player.hit();
 
 				if (!player.isAlive()) {
 					gameState = "GameOver";
@@ -148,7 +149,7 @@ void draw() {
 		background(30, 10, 30);
 		gameOver();
 	}
-	gameOverColor = color(200 - player.getHealth()*2, 10, 20);
+	gameOverColor = color(200 - player.getHealth()*4, 10, 20);
 	surface.setTitle(int(frameRate) + " fps");
 	newWave();
 }
