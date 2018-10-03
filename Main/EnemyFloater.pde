@@ -4,11 +4,9 @@ public class EnemyFloater extends Enemy {
 
 
 	public EnemyFloater() {
-		position = new PVector(random(500, 700), random(500, 700));
+		super(new PVector(random(500, 700), random(500, 700)), 15, color(60, 10, 0));
 		velocityX = random(-5, 5);
 		velocityY = random(-5, 5);
-		size = 15;
-		fillColor = color(60, 10, 0);
 	}
 
 	public void move() {
