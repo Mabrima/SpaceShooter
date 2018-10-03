@@ -8,6 +8,7 @@ color gameOverColor = color(15, 10, 15);
 int spawnTime = 45;
 int spawnTimer = 30;
 int frames;
+int waveAmount = 5;
 
 // for background
 int numberOfStars = 200;
@@ -85,13 +86,25 @@ boolean outOfBorders(PVector position) {
 }
 
 void newWave() {
+	float randomSpawn;
 	if (spawnTimer > 0) {
 		spawnTimer--;
 	} else {
-		enemies.add(new EnemyFloater());
-		enemies.add(new EnemyBasicShooter());
-		enemies.add(new EnemyChaser());
-		enemies.add(new EnemyCharger());
+		for (int i = 0; i < waveAmount; ++i) {
+			randomSpawn = random(100);
+			if (randomSpawn > 90) {
+				enemies.add(new EnemyCharger());
+			}
+			else if (randomSpawn > 75) {
+				enemies.add(new EnemyChaser());
+			}
+			else if (randomSpawn > 40) {
+				enemies.add(new EnemyBasicShooter());
+			}
+			else {
+				enemies.add(new EnemyFloater());
+			}
+		}
 		spawnTimer = spawnTime;
 	}
 }
