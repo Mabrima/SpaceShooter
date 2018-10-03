@@ -20,7 +20,7 @@ public class Explosion {
 	public void draw() {
 		fill(enemyColor);
 		ellipseMode(CENTER);
-		ellipse(position.x, position.y, size, size);
+		ellipse(position.x, position.y, lifeTime, lifeTime);
 	}
 
 	public boolean isAlive() {

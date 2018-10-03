@@ -45,7 +45,7 @@ void draw() {
 		for (int i = 0; i < bullets.size(); i++) { //checks if player bullets hit enemies and kills them
 			for (int j = 0; j < enemies.size(); j++) {
 				if (i != bullets.size() && circleCollision(bullets.get(i).position, bullets.get(i).size, enemies.get(j).position, enemies.get(j).size)){
-					explosions.add(new Explosion(enemies.get(j).position.copy(), enemies.get(j).fillColor));
+					addExplosions(enemies.get(j), (int) random(2,5));
 					enemies.remove(j);
 					bullets.remove(i);
 				}
@@ -102,5 +102,11 @@ void newWave() {
 	} else {
 		enemies.add(new EnemyFloater());
 		spawnTimer = spawnTime;
+	}
+}
+
+void addExplosions(Enemy enemy, int numberOfParticles) {
+	for (int i = 0; i < numberOfParticles; ++i) {
+		explosions.add(new Explosion(enemy.position.copy(), enemy.fillColor));
 	}
 }
