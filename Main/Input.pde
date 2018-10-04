@@ -93,7 +93,7 @@ void mousePressed() {
 		case RIGHT: mouseRight = true;
 			break;
 	}
-}
+}	
 
 void mouseReleased() {
 	switch (mouseButton) {

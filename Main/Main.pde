@@ -1,14 +1,16 @@
 Player player;
-EnemyFloater enemy;
-EnemyCharger enemy2;
-EnemyChaser enemy3;
-EnemyBasicShooter enemyShooter;
 int borderLeniency = 20;
 color gameOverColor = color(15, 10, 15);
 int spawnTime = 45;
 int spawnTimer = 30;
 int frames;
 int waveAmount = 5;
+
+//Menu shit
+boolean overStart = false;
+boolean overQuit = false;
+int[] startButton = {100, 100, 265, 125};
+int[] quitButton = {100, 300, 265, 125};
 
 // for background
 int numberOfStars = 200;
@@ -31,26 +33,18 @@ void setup() {
 	gameOverColor = color(200, 10, 20);
 	textSize(50);
 
-	gameState = "Gameplay";
+	gameState = "MainMenu";
 
 	//for background
 	stars = new float[numberOfStars];
 	starBackground();
-
-	// enemy = new EnemyFloater();
-	// enemy2 = new EnemyCharger();
-	// enemy3 = new EnemyChaser();
-	// enemyShooter = new EnemyBasicShooter();
-	// enemies.add(enemyShooter);
-	// enemies.add(enemy);
-	// enemies.add(enemy2);
-	// enemies.add(enemy3);
 }
 
 void draw() {
 
 	if (gameState.equals("MainMenu")) {
 		backgroundGroup();
+		menuFunctions();
 		
 	}
 
@@ -130,6 +124,8 @@ void resetGame() {
 	enemies.clear();
 	enemyBullets.clear();
 	explosions.clear();
+	player.getBullets().clear();
+	frames = 0;
 	gameState = "Gameplay";
 	waveAmount = 5;
 }
@@ -296,4 +292,20 @@ void updateStars() {
 			spaceLine.remove(i);
 		}
 	}
+}
+
+void menuFunctions() {
+
+   // int[] startButton = {100, 100, 200, 100};
+   // int[] quitButton = {100, 300, 200, 100};  
+  	
+	fill(255);
+	rect(startButton[0], startButton[1], startButton[2], startButton[3]);
+	fill(128);
+	text("Play!", startButton[0] + (startButton[2] / 2) - (textWidth("Play!") / 2),
+		 startButton[1] + (startButton[3] / 2) + ((textAscent()) * 0.33));
+	// println(textAscent() + textDescent());
+
+	rect(quitButton[0], quitButton[1], quitButton[2], quitButton[3]);
+
 }
