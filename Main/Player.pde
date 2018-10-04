@@ -39,6 +39,16 @@ public class Player {
 		position.x += movement.x * velocity;
 		position.y += movement.y * velocity;
 
+		if (position.x > width) {
+			position.x = size/2;
+		} else if (position.x < 0) {
+			position.x = width - size/2;
+		} else if (position.y > height) {
+			position.y = size/2;
+		} else if (position.y < 0) {
+			position.y = height - size/2;
+		}
+
 		//tri-nan-gle
 		facingDirection.set(mouseX - position.x, mouseY - position.y);
 		facingDirection.normalize();
