@@ -57,6 +57,7 @@ void draw() {
 		updateGame();
 		newWave();
 		score = killScore + frames/60; 
+		frames++;
 	}
 
 	if(gameState.equals("GameOver")) {
@@ -65,7 +66,7 @@ void draw() {
 	}
 
 	surface.setTitle(int(frameRate) + " fps");
-	frames++;
+	
 }
 
 void scoreDraw() {
