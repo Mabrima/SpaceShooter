@@ -25,7 +25,7 @@ public class SpaceLines {
 	}
 
 	private float graph(float y) {
-		float x = pow(y * 0.008f, 8);
+		float x = pow(y * (0.008f + ((waveAmount-5) * 0.005)), 8); //default 0.008, 8
 		return x;
 	}
 

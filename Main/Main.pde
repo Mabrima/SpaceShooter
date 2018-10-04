@@ -300,7 +300,7 @@ void updateStars() {
 	}
 	else {		
 		spaceLine.add(new SpaceLines());
-		starTimer = 30;
+		starTimer = 30 - (((waveAmount-4) * 5));
 	}
 
 	for (SpaceLines eachLine : spaceLine) {
