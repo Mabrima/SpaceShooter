@@ -6,6 +6,7 @@ public class Player {
 	int reloadTime = 10;
 	int reloadTimer = 0;
 	int borderLeniency = 20;
+	int bulletSpeed = 10;
 	color bulletColor = color(255);
 	color fillColor = color(200, 100, 20);
 	int health = 45;
@@ -107,7 +108,7 @@ public class Player {
 			reloadTimer--;
 		}
 		else if (getMouseLeftClick()) {
-			bullets.add(new Bullet(position.copy(), facingDirection.copy(), bulletColor, 10, 10));
+			bullets.add(new Bullet(position.copy(), facingDirection.copy(), bulletColor, bulletSpeed, 10));
 			reloadTimer = reloadTime;
 		}
 	}
