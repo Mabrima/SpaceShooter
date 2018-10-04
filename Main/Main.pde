@@ -3,12 +3,12 @@ int borderLeniency = 20;
 color gameOverColor = color(15, 10, 15);
 int spawnTime = 45;
 int spawnTimer = 30;
-int frames;
+int frames = 0;
+int score = 0;
+int killScore = 0;
 int waveAmount = 5;
 
 //Menu shit
-boolean overStart = false;
-boolean overQuit = false;
 int[] startButton = {100, 100, 265, 125};
 int[] quitButton = {100, 300, 265, 125};
 
@@ -28,10 +28,10 @@ ArrayList<Bullet> enemyBullets = new ArrayList<Bullet>();
 
 void setup() {
 	size(1280, 720);
-	frames = 0;
 	player = new Player();
 	gameOverColor = color(200, 10, 20);
 	textSize(50);
+	textAlign(CENTER);
 
 	gameState = "MainMenu";
 
@@ -50,8 +50,10 @@ void draw() {
 
 	if (gameState.equals("Gameplay")) {
 		backgroundGroup();
+		scoreDraw();
 		updateGame();
 		newWave();
+		score = killScore + frames/60; 
 	}
 
 	if(gameState.equals("GameOver")) {
@@ -63,18 +65,29 @@ void draw() {
 	frames++;
 }
 
+void scoreDraw() {
+	textAlign(LEFT);
+	textSize(20);
+	fill(255);
+	text("Score: " + score, 20, 30);
+}
+
 void gameOver() {
 	fill(gameOverColor);
-    text("You Are Dead!", width/2 - textWidth("You Are Dead!") / 2, height/2); 
+	textSize(50);
+	textAlign(CENTER);
+    text("You Are Dead!", width/2, height/2); 
+    text("Score: " + score, width/2, height/3);
     if (frames%120 >= 60) 
-			text("Press Space to retry!", width/2 - textWidth("Press Space to retry!")/2, height*2/3);
+			text("Press Space to retry!", width/2, height*2/3);
 	if (spacePressed) 
 		resetGame();
 }
 
 void healthSystem() {
+	textAlign(CENTER);
 	fill(200 - player.health*4, 10, 0);
-	text("You Are Dying!", width/2 - textWidth("You Are Dying!") / 2, height/2); 
+	text("You Are Dying!", width/2, height/2); 
 }
 
 boolean outOfBorders(PVector position) {
@@ -128,6 +141,7 @@ void resetGame() {
 	frames = 0;
 	gameState = "Gameplay";
 	waveAmount = 5;
+	killScore = 0;
 }
 
 void updateGame() {
@@ -180,12 +194,17 @@ void updateGame() {
 
 	//Colision/borders phase
 
-	//checks playerBullets towards enemies and kills them if they hit and adds explosions to that area
+	//checks playerBullets towards enemies and kills them if they hit and adds explosions to that area // now also adds score!
 	ArrayList<Bullet> playerBullets = player.getBullets();
 	for (int i = 0; i < playerBullets.size(); i++) { //checks if playerBullets hit enemies and kills them
 		for (int j = 0; j < enemies.size(); j++) {
 			if (i != playerBullets.size() && circleCollision(playerBullets.get(i).position, playerBullets.get(i).size, enemies.get(j).position, enemies.get(j).size)){
 				addExplosions(enemies.get(j), (int) random(2,5));
+				if (enemies.get(j) instanceof EnemyFloater && !(enemies.get(j) instanceof EnemyBasicShooter)) {
+					killScore += 5;
+				} else {
+					killScore++;
+				}
 				enemies.remove(j);
 				playerBullets.remove(i);
 			}
@@ -322,6 +341,7 @@ void menuFunctions() {
 	text("Welcome to SpaceyShooty, this is a game about shooty, in space(y)." + '\n' +
 	"You will be attacked on all sides, by other stuff, sometimes they shoot, too." + '\n' +
 	"The goal is to stay alive as long as possible and give them aliens what for!" + '\n' +
+	"Here is a free tip. The yellow floaters are worth five times as many points" + '\n' +
 	" " + '\n' +
 	"This is you"  + '\n' +
 	"	|"  + '\n' +
@@ -329,7 +349,7 @@ void menuFunctions() {
 	" " + '\n' +
  	" " + '\n' +
 	"Fly around the screen with WASD, use the mouse to aim." + '\n' +
-	"Shoot 'Play' to begin.", 850, 120);
+	"Click 'Play' to begin.", 850, 120);
 
 	//Credits
 	textSize(20);
