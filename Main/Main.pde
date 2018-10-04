@@ -49,31 +49,31 @@ void setup() {
 
 void draw() {
 
+	if (gameState.equals("MainMenu")) {
+		
+	}
 
 	if (gameState.equals("Gameplay")) {
-		
 		updateGame();
+		newWave();
 	}
 
 	if(gameState.equals("GameOver")) {
-		background(30, 10, 30);
 		gameOver();
-
-		if (frames%120 >= 60) 
-			text("Press Space to retry!", width/2 - textWidth("Press Space to retry!")/2, height*2/3);
-		if (spacePressed) 
-			resetGame();
 	}
 
-	
 	surface.setTitle(int(frameRate) + " fps");
-	newWave();
 	frames++;
 }
 
 void gameOver() {
+	background(30, 10, 30);
 	fill(gameOverColor);
     text("You Are Dead!", width/2 - textWidth("You Are Dead!") / 2, height/2); 
+    if (frames%120 >= 60) 
+			text("Press Space to retry!", width/2 - textWidth("Press Space to retry!")/2, height*2/3);
+	if (spacePressed) 
+		resetGame();
 }
 
 void healthSystem() {
@@ -87,18 +87,20 @@ boolean outOfBorders(PVector position) {
 
 void newWave() {
 	float randomSpawn;
+	if (frames%600 == 599)
+		waveAmount++;
 	if (spawnTimer > 0) {
 		spawnTimer--;
 	} else {
 		for (int i = 0; i < waveAmount; ++i) {
 			randomSpawn = random(100);
-			if (randomSpawn > 90) {
+			if (randomSpawn > 85) {
 				enemies.add(new EnemyCharger());
 			}
-			else if (randomSpawn > 75) {
+			else if (randomSpawn > 70) {
 				enemies.add(new EnemyChaser());
 			}
-			else if (randomSpawn > 40) {
+			else if (randomSpawn > 50) {
 				enemies.add(new EnemyBasicShooter());
 			}
 			else {
@@ -127,6 +129,7 @@ void resetGame() {
 	enemyBullets.clear();
 	explosions.clear();
 	gameState = "Gameplay";
+	waveAmount = 5;
 }
 
 void updateGame() {
