@@ -50,15 +50,18 @@ void setup() {
 void draw() {
 
 	if (gameState.equals("MainMenu")) {
+		backgroundGroup();
 		
 	}
 
 	if (gameState.equals("Gameplay")) {
+		backgroundGroup();
 		updateGame();
 		newWave();
 	}
 
 	if(gameState.equals("GameOver")) {
+		backgroundGroup();
 		gameOver();
 	}
 
@@ -67,7 +70,6 @@ void draw() {
 }
 
 void gameOver() {
-	background(30, 10, 30);
 	fill(gameOverColor);
     text("You Are Dead!", width/2 - textWidth("You Are Dead!") / 2, height/2); 
     if (frames%120 >= 60) 
@@ -133,13 +135,6 @@ void resetGame() {
 }
 
 void updateGame() {
-	background(10, 10, 10);
-	// background(255);
-
-	stroke(255);
-	strokeWeight(1);
-	animateBackground();
-	updateStars();
 
 	healthSystem();
 
@@ -252,6 +247,13 @@ void updateGame() {
 	}	 
 }
 
+void backgroundGroup() {
+	background(10, 10, 10);
+	stroke(255);
+	strokeWeight(1);
+	animateBackground();
+	updateStars();
+}
 
 void starBackground() {
 	for (int i = 0; i < stars.length; i += 2) {
