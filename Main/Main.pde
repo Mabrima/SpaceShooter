@@ -9,8 +9,8 @@ int killScore = 0;
 int waveAmount = 5;
 
 //Menu shit
-int[] startButton = {100, 100, 265, 125};
-int[] quitButton = {100, 300, 265, 125};
+int[] startButton = {232, 162, 265, 125};
+int[] quitButton = {232, 362, 265, 125};
 
 // for background
 int numberOfStars = 200;
@@ -342,14 +342,14 @@ void menuFunctions() {
    	fill(255);
 	rect(startButton[0], startButton[1], startButton[2], startButton[3]);
 	fill(128);
-	text("Play", startButton[0] + (startButton[2] / 2),
-		 startButton[1] + (startButton[3] / 2) + ((textAscent()) * 0.33));
+	text("Play", startButton[0],
+		 startButton[1] + ((textAscent()) * 0.33));
 
 	fill(255);
 	rect(quitButton[0], quitButton[1], quitButton[2], quitButton[3]);
 	fill(128);
-	text("Quit", quitButton[0] + (quitButton[2] / 2),
-		 quitButton[1] + (quitButton[3] / 2) + ((textAscent()) * 0.33));
+	text("Quit", quitButton[0],
+		 quitButton[1] + ((textAscent()) * 0.33));
 
 	//Instructions
 	textSize(20);
