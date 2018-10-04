@@ -158,11 +158,9 @@ void updateGame() {
 	//checks all enemies. If they are chasers then give player position to them
 	for (Enemy currentEnemy : enemies) {
 		if (currentEnemy instanceof EnemyChaser){
-			EnemyChaser chaser = (EnemyChaser) currentEnemy;
-			chaser.findPlayerPosition(player.position);
+			((EnemyChaser) currentEnemy).findPlayerPosition(player.position);
 		} else if (currentEnemy instanceof EnemyBasicShooter) {
-			EnemyBasicShooter shooter = (EnemyBasicShooter) currentEnemy;
-			shooter.findPlayerPosition(player.position);
+			((EnemyBasicShooter) currentEnemy).findPlayerPosition(player.position);
 		}
 	}
 
