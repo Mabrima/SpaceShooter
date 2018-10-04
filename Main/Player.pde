@@ -91,14 +91,14 @@ public class Player {
 	}
 
 	void screenWall() {
-		if (position.x > width) {
-			position.x = width;
-		} else if (position.x < 0) {
-			position.x = 0;
-		} else if (position.y > height) {
-			position.y = height;
-		} else if (position.y < 0) {
-			position.y = 0;
+		if (position.x > width - size/2) {
+			position.x = width - size/2;
+		} if (position.x < size/2) {
+			position.x = size/2;
+		} if (position.y > height - size/2) {
+			position.y = height - size/2;
+		} if (position.y < size/2) {
+			position.y = size/2;
 		}
 	}
 
