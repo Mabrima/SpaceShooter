@@ -296,16 +296,28 @@ void updateStars() {
 
 void menuFunctions() {
 
+	player.move();
+	player.playerDraw();
+
    // int[] startButton = {100, 100, 200, 100};
    // int[] quitButton = {100, 300, 200, 100};  
   	
-	fill(255);
+  	textSize(50);
+  	stroke(0);
+   	fill(255);
 	rect(startButton[0], startButton[1], startButton[2], startButton[3]);
 	fill(128);
-	text("Play!", startButton[0] + (startButton[2] / 2) - (textWidth("Play!") / 2),
+	text("Play", startButton[0] + (startButton[2] / 2),
 		 startButton[1] + (startButton[3] / 2) + ((textAscent()) * 0.33));
-	// println(textAscent() + textDescent());
 
+	fill(255);
 	rect(quitButton[0], quitButton[1], quitButton[2], quitButton[3]);
+	fill(128);
+	text("Quit", quitButton[0] + (quitButton[2] / 2),
+		 quitButton[1] + (quitButton[3] / 2) + ((textAscent()) * 0.33));
+
+	textSize(20);
+	textAlign(CENTER);
+	text("Av Robin Arkblad" + '\n' + "och Anton Lindkvist", 225, 500);
 
 }
