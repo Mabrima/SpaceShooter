@@ -39,16 +39,9 @@ public class Player {
 		position.x += movement.x * velocity;
 		position.y += movement.y * velocity;
 
-		if (position.x > width) {
-			position.x = size/2;
-		} else if (position.x < 0) {
-			position.x = width - size/2;
-		} else if (position.y > height) {
-			position.y = size/2;
-		} else if (position.y < 0) {
-			position.y = height - size/2;
-		}
-
+		// screenWarp();
+		screenWall();
+		
 		//tri-nan-gle
 		facingDirection.set(mouseX - position.x, mouseY - position.y);
 		facingDirection.normalize();
@@ -82,6 +75,30 @@ public class Player {
 		for (int i = 0; i < bullets.size(); i++) {
 			bullets.get(i).move();
 			bullets.get(i).draw();
+		}
+	}
+
+	void screenWarp() {
+		if (position.x > width) {
+			position.x = size/2;
+		} else if (position.x < 0) {
+			position.x = width - size/2;
+		} else if (position.y > height) {
+			position.y = size/2;
+		} else if (position.y < 0) {
+			position.y = height - size/2;
+		}
+	}
+
+	void screenWall() {
+		if (position.x > width) {
+			position.x = width;
+		} else if (position.x < 0) {
+			position.x = 0;
+		} else if (position.y > height) {
+			position.y = height;
+		} else if (position.y < 0) {
+			position.y = 0;
 		}
 	}
 
