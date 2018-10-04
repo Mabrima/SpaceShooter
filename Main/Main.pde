@@ -21,6 +21,7 @@ ArrayList<SpaceLines> spaceLine = new ArrayList<SpaceLines>();
 
 String gameState; //Menu, Gameplay, GameOver
 
+ArrayList<Bullet> playerBullets;
 ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 ArrayList<Explosion> explosions = new ArrayList<Explosion>();
 ArrayList<Bullet> enemyBullets = new ArrayList<Bullet>();
@@ -29,9 +30,11 @@ ArrayList<Bullet> enemyBullets = new ArrayList<Bullet>();
 void setup() {
 	size(1280, 720);
 	player = new Player();
+	playerBullets = player.getBullets();
 	gameOverColor = color(200, 10, 20);
 	textSize(50);
 	textAlign(CENTER);
+	rectMode(CENTER);
 
 	gameState = "MainMenu";
 
@@ -45,7 +48,7 @@ void draw() {
 	if (gameState.equals("MainMenu")) {
 		backgroundGroup();
 		menuFunctions();
-		
+		checkBoxes();
 	}
 
 	if (gameState.equals("Gameplay")) {
@@ -195,7 +198,6 @@ void updateGame() {
 	//Colision/borders phase
 
 	//checks playerBullets towards enemies and kills them if they hit and adds explosions to that area // now also adds score!
-	ArrayList<Bullet> playerBullets = player.getBullets();
 	for (int i = 0; i < playerBullets.size(); i++) { //checks if playerBullets hit enemies and kills them
 		for (int j = 0; j < enemies.size(); j++) {
 			if (i != playerBullets.size() && circleCollision(playerBullets.get(i).position, playerBullets.get(i).size, enemies.get(j).position, enemies.get(j).size)){
@@ -311,6 +313,20 @@ void updateStars() {
 			spaceLine.remove(i);
 		}
 	}
+}
+
+//in MainMeny j < amountOfmenyButtons
+void checkBoxes() {
+	for (int i = 0; i < playerBullets.size(); i++) { //checks if playerBullets hit enemies and kills them
+		if (boxAndCircleCollision(playerBullets.get(i).position, playerBullets.get(i).size, startButton)){
+			gameState = "Gameplay";
+		}
+
+		if (boxAndCircleCollision(playerBullets.get(i).position, playerBullets.get(i).size, quitButton)){
+			exit();
+		}
+
+	} 
 }
 
 void menuFunctions() {
