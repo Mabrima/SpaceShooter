@@ -107,13 +107,13 @@ void newWave() {
 	} else {
 		for (int i = 0; i < waveAmount; ++i) {
 			randomSpawn = random(100);
-			if (randomSpawn > 85) {
+			if (randomSpawn > 95) {
 				enemies.add(new EnemyCharger());
 			}
-			else if (randomSpawn > 70) {
+			else if (randomSpawn > 80) {
 				enemies.add(new EnemyChaser());
 			}
-			else if (randomSpawn > 50) {
+			else if (randomSpawn > 55) {
 				enemies.add(new EnemyBasicShooter());
 			}
 			else {
