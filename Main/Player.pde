@@ -6,7 +6,7 @@ public class Player {
 	int reloadTime = 10;
 	int reloadTimer = 0;
 	int borderLeniency = 20;
-	int bulletSpeed = 10;
+	int bulletSpeed = 15;
 	color bulletColor = color(255);
 	color fillColor = color(200, 100, 20);
 	int health = 45;
