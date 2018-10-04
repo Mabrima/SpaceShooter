@@ -329,7 +329,7 @@ void menuFunctions() {
 	" " + '\n' +
  	" " + '\n' +
 	"Fly around the screen with WASD, use the mouse to aim." + '\n' +
-	"Shoot start to begin.", 850, 120);
+	"Shoot Play to begin.", 850, 120);
 
 	//Credits
 	textSize(20);

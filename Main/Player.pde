@@ -22,7 +22,7 @@ public class Player {
 
 
 	public Player () {
-		position = new PVector(900, 400);
+		position = new PVector(850, 330);
 		velocity = 5;
 		size = 20;
 		movement = new PVector(0,0);
