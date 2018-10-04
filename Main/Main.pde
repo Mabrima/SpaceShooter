@@ -316,8 +316,23 @@ void menuFunctions() {
 	text("Quit", quitButton[0] + (quitButton[2] / 2),
 		 quitButton[1] + (quitButton[3] / 2) + ((textAscent()) * 0.33));
 
+	//Instructions
 	textSize(20);
 	textAlign(CENTER);
-	text("Av Robin Arkblad" + '\n' + "och Anton Lindkvist", 225, 500);
+	text("Welcome to SpaceyShooty, this is a game about shooty, in space(y)." + '\n' +
+	"You will be attacked on all sides, by other stuff, sometimes they shoot, too." + '\n' +
+	"The goal is to stay alive as long as possible and give them aliens what for!" + '\n' +
+	" " + '\n' +
+	"This is you"  + '\n' +
+	"	|"  + '\n' +
+	"	V" + '\n' +
+	" " + '\n' +
+ 	" " + '\n' +
+	"Fly around the screen with WASD, use the mouse to aim." + '\n' +
+	"Shoot start to begin.", 850, 120);
 
+	//Credits
+	textSize(20);
+	textAlign(CENTER);
+	text("Av Robin Arkblad" + '\n' + "och Anton Lindkvist", 230, 600);
 }
