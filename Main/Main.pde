@@ -61,10 +61,11 @@ void draw() {
 	if(gameState.equals("GameOver")) {
 		backgroundGroup();
 		gameOver();
+		frames++;
 	}
 
 	surface.setTitle(int(frameRate) + " fps");
-	
+		
 }
 
 void scoreDraw() {
