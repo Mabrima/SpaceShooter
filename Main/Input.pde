@@ -10,24 +10,24 @@ boolean spacePressed = false;
 void keyPressed() {
 
 	switch (key) {
-		// case 'w': moveUp = true;
-		// 	break;
-		// case 's': moveDown = true;
-		// 	break;
-		// case 'a': moveLeft = true;
-		// 	break;
-		// case 'd': moveRight = true;
-		// 	break;
-		// case 'W': moveUp = true;
-		// 	break;
-		// case 'S': moveDown = true;
-		// 	break;
-		// case 'A': moveLeft = true;
-		// 	break;
-		// case 'D': moveRight = true;
-		// 	break;
-		// case 32: spacePressed = true;
-		// 	break;
+		case 'w': moveUp = true;
+			break;
+		case 's': moveDown = true;
+			break;
+		case 'a': moveLeft = true;
+			break;
+		case 'd': moveRight = true;
+			break;
+		case 'W': moveUp = true;
+			break;
+		case 'S': moveDown = true;
+			break;
+		case 'A': moveLeft = true;
+			break;
+		case 'D': moveRight = true;
+			break;
+		case 32: spacePressed = true;
+			break;
 	}
 
 }
@@ -35,24 +35,24 @@ void keyPressed() {
 void keyReleased() {
 
 	switch (key) {
-		// case 'w': moveUp = false;
-		// 	break;
-		// case 's': moveDown = false;
-		// 	break;
-		// case 'a': moveLeft = false;
-		// 	break;
-		// case 'd': moveRight = false;
-		// 	break;
-		// case 'W': moveUp = false;
-		// 	break;
-		// case 'S': moveDown = false;
-		// 	break;
-		// case 'A': moveLeft = false;
-		// 	break;
-		// case 'D': moveRight = false;
-		// 	break;
-		// case 32: spacePressed = false;
-		// 	break;	
+		case 'w': moveUp = false;
+			break;
+		case 's': moveDown = false;
+			break;
+		case 'a': moveLeft = false;
+			break;
+		case 'd': moveRight = false;
+			break;
+		case 'W': moveUp = false;
+			break;
+		case 'S': moveDown = false;
+			break;
+		case 'A': moveLeft = false;
+			break;
+		case 'D': moveRight = false;
+			break;
+		case 32: spacePressed = false;
+			break;	
 	}
 
 
