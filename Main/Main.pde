@@ -26,7 +26,7 @@ ArrayList<Bullet> enemyBullets = new ArrayList<Bullet>();
 
 
 void setup() {
-	size(1920, 1055);
+	size(1280, 720);
 	player = new Player();
 	playerBullets = player.getBullets();
 	gameOverColor = color(200, 10, 20);
