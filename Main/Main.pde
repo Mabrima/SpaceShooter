@@ -26,7 +26,7 @@ ArrayList<Bullet> enemyBullets = new ArrayList<Bullet>();
 
 
 void setup() {
-	size(1280, 720);
+	size(1920, 1055);
 	player = new Player();
 	playerBullets = player.getBullets();
 	gameOverColor = color(200, 10, 20);
@@ -89,6 +89,7 @@ void gameOver() {
 
 void healthSystem() {
 	textAlign(CENTER);
+	textSize(50);
 	fill(200 - player.health*4, 10, 0);
 	text("You Are Dying!", width/2, height/2); 
 }
