@@ -9,13 +9,13 @@ public class Player {
 	int bulletSpeed = 15;
 	color bulletColor = color(255);
 	color fillColor = color(200, 100, 20);
-	int health = 45;
+	int health = 90;
 
 	ArrayList<Bullet> bullets = new ArrayList<Bullet>();
 
 	//triangle vectors
 	PVector facingDirection, facingLeft, facingRight;
-	int shipLength = 10;
+	int shipLength = 20;
 	int halfShipWidth = shipLength / 2;
 	float frontx, fronty, leftx, lefty, rightx, righty;
 	
@@ -25,7 +25,7 @@ public class Player {
 	public Player () {
 		position = new PVector(850, 350);
 		velocity = 5;
-		size = 20;
+		size = 40;
 		movement = new PVector(0,0);
 
 		facingDirection = new PVector(0,0);
