@@ -6,6 +6,7 @@ int spawnTimer = 30;
 int frames = 0;
 int score = 0;
 int killScore = 0;
+int surviveScore = 0;
 int waveAmount = 5;
 int[] startButton = {232, 162, 265, 125};
 int[] quitButton = {232, 362, 265, 125};
@@ -26,7 +27,7 @@ ArrayList<Bullet> enemyBullets = new ArrayList<Bullet>();
 
 
 void setup() {
-	size(1280, 720);
+	size(1920, 1055);
 	player = new Player();
 	playerBullets = player.getBullets();
 	gameOverColor = color(200, 10, 20);
@@ -54,7 +55,8 @@ void draw() {
 		scoreDraw();
 		updateGame();
 		newWave();
-		score = killScore + frames/60; 
+		surviveScore = frames/60;
+		score = killScore + surviveScore; 
 		frames++;
 	}
 
@@ -81,6 +83,7 @@ void gameOver() {
 	textAlign(CENTER);
     text("You Are Dead!", width/2, height/2); 
     text("Score: " + score, width/2, height/3);
+    text("You survived for " + surviveScore + " seconds!", width/2, height/4);
     if (frames%120 >= 60) 
 			text("Press Space to retry!", width/2, height*2/3);
 	if (spacePressed) 
