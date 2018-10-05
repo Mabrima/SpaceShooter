@@ -354,11 +354,11 @@ void menuFunctions() {
 	textSize(20);
 	textAlign(CENTER);
 	text("Welcome to SpaceyShooty, this is a game about shooty, in space(y)." + '\n' +
-	"You will be attacked on all sides, by other stuff, sometimes they shoot, too." + '\n' +
+	"Enemies will come in from hyperspace from all around you so stay vigilant!" + '\n' +
 	"The goal is to stay alive as long as possible and give them aliens what for!" + '\n' +
-	"Here is a free tip. The yellow floaters are worth five times as many points" + '\n' +
+	"Here is a free tip. The yellow floaters are worth five times as many points." + '\n' +
 	" " + '\n' +
-	"This is you"  + '\n' +
+	"This is you."  + '\n' +
 	"	|"  + '\n' +
 	"	V" + '\n' +
 	" " + '\n' +
