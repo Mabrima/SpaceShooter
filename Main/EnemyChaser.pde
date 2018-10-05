@@ -7,7 +7,7 @@ public class EnemyChaser extends Enemy {
 	public EnemyChaser() {
 		super(new PVector(random(0, width), random(0, height)), 30, color(10, 150, 20));
 
-		speed = 3;
+		speed = 1;
 		target = new PVector(0, 0);
 		direction = new PVector(0, 0);
 	}

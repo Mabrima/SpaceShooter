@@ -6,6 +6,7 @@ public class Player {
 	int reloadTime = 10;
 	int reloadTimer = 0;
 	int borderLeniency = 20;
+	int bulletSpeed = 15;
 	color bulletColor = color(255);
 	color fillColor = color(200, 100, 20);
 	int health = 45;
@@ -22,7 +23,7 @@ public class Player {
 
 
 	public Player () {
-		position = new PVector(900, 400);
+		position = new PVector(850, 350);
 		velocity = 5;
 		size = 20;
 		movement = new PVector(0,0);
@@ -91,14 +92,14 @@ public class Player {
 	}
 
 	void screenWall() {
-		if (position.x > width) {
-			position.x = width;
-		} else if (position.x < 0) {
-			position.x = 0;
-		} else if (position.y > height) {
-			position.y = height;
-		} else if (position.y < 0) {
-			position.y = 0;
+		if (position.x > width - size/2) {
+			position.x = width - size/2;
+		} if (position.x < size/2) {
+			position.x = size/2;
+		} if (position.y > height - size/2) {
+			position.y = height - size/2;
+		} if (position.y < size/2) {
+			position.y = size/2;
 		}
 	}
 
@@ -107,7 +108,7 @@ public class Player {
 			reloadTimer--;
 		}
 		else if (getMouseLeftClick()) {
-			bullets.add(new Bullet(position.copy(), facingDirection.copy(), bulletColor, 10, 10));
+			bullets.add(new Bullet(position.copy(), facingDirection.copy(), bulletColor, bulletSpeed, 10));
 			reloadTimer = reloadTime;
 		}
 	}
